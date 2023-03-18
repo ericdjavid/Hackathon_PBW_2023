@@ -1,12 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const data = [
-  { name: "Falafel", description: "Tasty falafels" },
-  { name: "Falafel", description: "Tasty falafels" },
+  {id: 1, name: "Falafel", description: "Tasty falafels", image: "/img/test.jpg" },
+  {id: 2, name: "Falafel", description: "Tasty falafels", image: "/img/test.jpg" },
+  {id: 3, name: "Falafel", description: "Tasty falafels", image: "/img/test.jpg" },
+  {id: 4, name: "Falafel", description: "Tasty falafels", image: "/img/test.jpg" },
 ]
 
 export default function Home() {
@@ -36,16 +39,17 @@ export default function Home() {
       <div className='w-screen m-10'>
         <div className='w-screen'>
         </div>
-        <h2 className="text-2xl text-white font-bold text-left z-10 m-2">
+        <h2 className="text-2xl text-white font-bold text-left z-10 m-4">
           Liste des partenaires
         </h2>
-        <div className='w-full flex sm:flex-col md:flex-row'>
+        <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 '>
 {
   data.map((e) => (
-    <div className="w-1/4 rounded overflow-hidden shadow-lg bg-white m-2"
+    <div className="w-1/4 rounded overflow-hidden shadow-lg bg-white mx-4 "
     key={e.name}
     >
-            <Image className="w-full bg-cover" src="/img/test.jpg" alt="Sunset in the mountains" width={100} height={100} />
+        <Link href={`/partners/${e.id}`}>
+            <Image className="w-full bg-cover" src={e.image} alt="Sunset in the mountains" width={100} height={100} />
             <div className="px-6 py-4">
               <div className="text-black font-bold text-xl mb-2">{e.name}</div>
               <p className="text-gray-700 text-base">
@@ -57,6 +61,7 @@ export default function Home() {
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
             </div>
+</Link>
           </div>
   ))
 }
