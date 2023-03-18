@@ -1,14 +1,13 @@
-import React, { useCallback, useState } from "react";
-import { isConnected, getNFT, getPublicKey } from "@gemwallet/api";
+import React, { useCallback, useState } from 'react';
+import { isConnected, getNFT, getPublicKey } from '@gemwallet/api';
 
 export default function LoginNftButton() {
   const [nfts, setNfts] = useState<unknown[]>();
   const [address, setAddress] = useState('');
   const [showAddress, setShowAddress] = useState(false);
-  const [isGemWalletInstalled, setIsGemWalletInstalled] =
-    useState<boolean>(true);
+  const [isGemWalletInstalled, setIsGemWalletInstalled] = useState<boolean>(true);
 
-  const handleNFT = useCallback(async () =>{
+  const handleNFT = useCallback(async () => {
     const isConnectedGem = await isConnected();
     if (isConnectedGem) {
       const responsePublicKey = await getPublicKey();
@@ -20,11 +19,10 @@ export default function LoginNftButton() {
       const nft = await getNFT();
       setNfts(nft || []);
       if (nfts?.length == 0) {
-        alert("No NFTs found in your wallet");
+        alert('No NFTs found in your wallet');
+      } else {
+        alert('NFTs found in your wallet');
       }
-      else {
-        alert("NFTs found in your wallet");
-        }
     } else {
       setIsGemWalletInstalled(false);
     }
@@ -33,8 +31,8 @@ export default function LoginNftButton() {
   return (
     <section>
       {!isGemWalletInstalled ? <div>Please install GemWallet</div> : null}
-      <button type="button" onClick={handleNFT}>
-        Login & get my NFTs
+      <button type="button" class="connect_wallet" onClick={handleNFT}>
+        Connect cash back program
       </button>
       {showAddress ? <p id="address">{address}</p> : null}
       {nfts !== undefined ? (
@@ -44,4 +42,4 @@ export default function LoginNftButton() {
       ) : null}
     </section>
   );
-};
+}
