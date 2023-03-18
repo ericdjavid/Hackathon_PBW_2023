@@ -65,7 +65,7 @@ export default function Home() {
                 key={e.name}
               >
                 <Link href={`/partners/${e.index}`}>
-                  <Image className="w-full bg-cover" src={e.image} alt="Sunset in the mountains" width={100} height={100} />
+                  <Image className="w-full bg-cover max-h-48" src={e.image} alt="Sunset in the mountains" width={100} height={100} />
                   <div className="px-6 py-4">
                     <div className="text-black font-bold text-xl mb-2">{e.nom}</div>
                     <p className="text-gray-700 text-base">
