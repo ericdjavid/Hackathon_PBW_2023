@@ -3,7 +3,6 @@ import { getAddress, isConnected, getNFT, getPublicKey } from "@gemwallet/api";
 
 export default function LoginButton() {
   const [address, setAddress] = useState('');
-
   const connect = useCallback(async () => {
     const isConnected_ = await isConnected();
     if (isConnected_) {
@@ -21,8 +20,14 @@ export default function LoginButton() {
 
   return (
     <>
+    {address === "" && (
+
       <button onClick={connect}>Login with GemWallet</button>
+    )}
+        {address !== "" && (
+
       <p id="address">{address}</p>
+)}
     </>
   );
 }
