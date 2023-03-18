@@ -61,7 +61,7 @@ export default function Home() {
         <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 '>
           {
             partners.map((e: any) => (
-              <div className="w-1/4 rounded overflow-hidden shadow-lg bg-white mx-4 "
+              <div className="w-full md:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-4 "
                 key={e.name}
               >
                 <Link href={`/partners/${e.index}`}>
