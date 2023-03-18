@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react'
-import { getAddress, isConnected, getNFT, getPublicKey } from "@gemwallet/api";
+import React, { useCallback, useState } from 'react';
+import { getAddress, isConnected, getNFT, getPublicKey } from '@gemwallet/api';
 
 export default function LoginButton() {
   const [address, setAddress] = useState('');
@@ -11,11 +11,16 @@ export default function LoginButton() {
       if (responsePublicKey) {
         const { address: addr, publicKey } = responsePublicKey;
         setAddress(addr);
+        getNFT()
+          .then((nfts) => {
+            console.log(`Your NFTs: ${nfts}`);
+          })
+          .catch((error) => {
+            console.error(`Error retrieving NFTs: ${error}`);
+          });
       }
     } else {
-      alert(
-        "User doesn't have GemWallet! Please install it: https://gemwallet.app"
-      );
+      alert("User doesn't have GemWallet! Please install it: https://gemwallet.app");
     }
   }, []);
 
