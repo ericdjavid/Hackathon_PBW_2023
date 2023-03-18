@@ -1,10 +1,11 @@
 import clientPromise from "../../lib/mongodb";
 
-const getData = async (req: any, res: any) => {
+const getDataPartner = async (req: any, res: any) => {
   try {
     const client:any = await clientPromise;
     const db:any = client.db("pbw");
-    let data = await db.collection("partners").find({}).toArray();
+    console.log(req?.query?.validated)
+    let data = await db.collection("partenaires").find({}).toArray();
     res.json({ status: 200, data: data });
   } catch (e:any) {
     console.error(e);
@@ -12,4 +13,4 @@ const getData = async (req: any, res: any) => {
   }
 };
 
-export default getData
+export default getDataPartner
