@@ -33,11 +33,10 @@ export default function LoginNftButton() {
   return (
     <section>
       {!isGemWalletInstalled ? <div>Please install GemWallet</div> : null}
-      {showAddress ? <p id="address">{address}</p> : null}
-      <div>Show the NFTs held in your wallet?</div>
       <button type="button" onClick={handleNFT}>
-        Get my NFTs
+        Login & get my NFTs
       </button>
+      {showAddress ? <p id="address">{address}</p> : null}
       {nfts !== undefined ? (
         <pre>
           <code>{JSON.stringify(nfts, null, 4)}</code>
