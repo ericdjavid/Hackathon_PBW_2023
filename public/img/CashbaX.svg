@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="188.2814mm"
+   height="112.18333mm"
+   viewBox="0 0 188.2814 112.18333"
+   version="1.1"
+   id="svg5"
+   inkscape:export-filename="CashbaX.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs2">
+    <rect
+       x="53.679813"
+       y="288.10434"
+       width="466.13107"
+       height="120.26996"
+       id="rect113" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.726751,-37.215236)">
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.27366323,0,-2.7362497)"
+       id="text111"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:96px;font-family:Achieve;-inkscape-font-specification:Achieve;white-space:pre;shape-inside:url(#rect113);fill:#000000"><tspan
+         x="53.679688"
+         y="378.1523"
+         id="tspan520"><tspan
+           style="font-weight:bold"
+           id="tspan518">Cashba</tspan></tspan></text>
+    <g
+       id="Layer_2"
+       data-name="Layer 2"
+       transform="matrix(0.26458333,0,0,0.26458333,68.541486,37.215235)">
+      <g
+         id="Layer_1-2"
+         data-name="Layer 1">
+        <path
+           class="cls-1"
+           d="m 437,0 h 74 L 357,152.48 c -55.77,55.19 -146.19,55.19 -202,0 L 0.94,0 H 75 l 117,115.83 a 91.11,91.11 0 0 0 127.91,0 z"
+           id="path189"
+           style="fill:#23292f" />
+        <path
+           class="cls-1"
+           d="M 74.05,424 H 0 L 155,270.58 c 55.77,-55.19 146.19,-55.19 202,0 L 512,424 H 438 L 320,307.23 a 91.11,91.11 0 0 0 -127.91,0 z"
+           id="path191"
+           style="fill:#23292f" />
+      </g>
+    </g>
+  </g>
+</svg>

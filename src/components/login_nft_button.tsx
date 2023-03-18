@@ -29,17 +29,22 @@ export default function LoginNftButton() {
   }, []);
 
   return (
-    <section>
-      {!isGemWalletInstalled ? <div>Please install GemWallet</div> : null}
-      <button type="button" class="connect_wallet" onClick={handleNFT}>
-        Connect cash back program
-      </button>
-      {showAddress ? <p id="address">{address}</p> : null}
-      {nfts !== undefined ? (
+    <>
+      <button 
+      onClick={address ? handleNFT  : handleNFT}
+      className="connect_wallet text-white font-bold py-2 px-4 rounded-full absolute top-5 right-5 z-20">
+  {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline-block mr-2" viewBox="0 0 20 20" fill="currentColor">
+    <path d="M10 0c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10zm0 17.5c-3.584 0-6.5-2.916-6.5-6.5s2.916-6.5 6.5-6.5 6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5z"/>
+    <path d="M9.5 5.5c0 .276-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5h3c.276 0 .5.224.5.5v2zm0 7c0 .276-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5h3c.276 0 .5.224.5.5v2zm6.5-7c0 .276-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5h3c.276 0 .5.224.5.5v2zm0 7c0 .276-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5v-2c0-.276.224-.5.5-.5h3c.276 0 .5.224.5.5v2z"/>
+  </svg> */}
+  
+      {showAddress ? <div>{address.slice(0,6) + "..."}</div> : <div>Connect Wallet</div>}
+</button>
+      {/* {nfts !== undefined ? (
         <pre>
           <code>{JSON.stringify(nfts, null, 4)}</code>
         </pre>
-      ) : null}
-    </section>
+      ) : null} */}
+    </>
   );
 }

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import Layout from '@/components/layout'
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +38,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Layout>
+
       <div className="relative h-80">
         <Image
           src="/img/test.jpg"
@@ -58,14 +61,14 @@ export default function Home() {
         <h2 className="text-2xl text-white font-bold text-left z-10 m-4">
           Liste des partenaires
         </h2>
-        <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 '>
+        <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 sm:justify-center justify-evenly'>
           {
             partners.map((e: any) => (
-              <div className="w-full md:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-4 "
+              <div className="w-full md:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-2  "
                 key={e.name}
               >
                 <Link href={`/partners/${e.index}`}>
-                  <Image className="w-full bg-cover max-h-48" src={e.image} alt="Sunset in the mountains" width={100} height={100} />
+                  <Image className="w-full bg-cover max-h-48 z-0" src={e.image} alt="Sunset in the mountains" width={100} height={100} />
                   <div className="px-6 py-4">
                     <div className="text-black font-bold text-xl mb-2">{e.nom}</div>
                     <p className="text-gray-700 text-base">
@@ -86,6 +89,7 @@ export default function Home() {
           }
         </div>
       </div>
+      </Layout>
     </>
   )
 }
