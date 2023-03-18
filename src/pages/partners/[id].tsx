@@ -56,7 +56,7 @@ const ItemPage = () => {
                     Prix: {e.prix} €
                   </div>
                   <div className="pb-2 text-black">
-                    Cashback: {e.fixCashback} XRPL
+                    Cashback: {(e.fixCashback / 0.3).toFixed(2)} XRP ({e.fixCashback}€ )
                   </div>
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Order
