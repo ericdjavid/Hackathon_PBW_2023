@@ -19,6 +19,12 @@ export default function LoginNftButton() {
       }
       const nft = await getNFT();
       setNfts(nft || []);
+      if (nfts?.length == 0) {
+        alert("No NFTs found in your wallet");
+      }
+      else {
+        alert("NFTs found in your wallet");
+        }
     } else {
       setIsGemWalletInstalled(false);
     }
