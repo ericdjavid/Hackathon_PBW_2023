@@ -1,11 +1,10 @@
-import Comp from "@/components/comp"
+import loginButton from "@/components/login_button"
 
 export default function Test() {
     const lol = "lol"
   return (
     <div>
-      <h1>{lol}</h1>
-      <Comp />
+        <title>Test gem Wallet</title>
     </div>
   )
 }
