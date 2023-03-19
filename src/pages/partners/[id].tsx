@@ -54,12 +54,15 @@ const ItemPage = () => {
                   <div className="pb-2 text-black">
                     Cashback: {(e.fixCashback / 0.3).toFixed(2)} XRP ({e.fixCashback}€ )
                   </div>
-                  <div className='flex justify-around h-full align-bottom'> 
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <div className='flex justify-around h-full align-bottom gap-x-2'> 
+
+                  <button className="bg-blue-500 hover:bg-blue-700 w-1/2 text-white font-bold py-2 px-4 rounded">
+                  <a target="_blank" href={e.stripe}>
                     Order FIAT
+                  </a>
                   </button>
 
-                  <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+                  <button className="bg-pink-500 hover:bg-pink-700 w-1/2 text-white font-bold py-2 px-4 rounded">
                     Order CRYPTO
                   </button>
 
