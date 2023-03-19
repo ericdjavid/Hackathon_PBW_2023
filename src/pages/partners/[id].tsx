@@ -1,4 +1,6 @@
 import Layout from '@/components/layout';
+import Modal from '@/components/modal_box';
+import PaymentButton from '@/components/payment_button';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -49,7 +51,7 @@ const ItemPage = () => {
   return (
     <Layout>
       <div>
-        <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 m-5'>
+        <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 my-5'>
           {
             data.map((e: any) => (
               <div className="w-full sm:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-auto sm:mx-4 "
@@ -63,7 +65,7 @@ const ItemPage = () => {
                     Description: {e.description}
                   </p>
                   <div className="pb-2 text-black">
-                    Prix: {e.prix} €
+                    Prix: {e.prix} € ({(e.prix / 0.3).toFixed(2)} XRP )
                   </div>
                   <div className="pb-2 text-black">
                     Cashback: {(e.fixCashback / 0.3).toFixed(2)} XRP ({e.fixCashback}€ )
@@ -96,12 +98,15 @@ const ItemPage = () => {
                       </button>
                     ) : null}
 
-                    <button className="bg-gray-400 w-1/2 text-gray-600 font-bold py-2 px-4 rounded cursor-default">
+                    {/* <button className="bg-gray-400 w-1/2 text-gray-600 font-bold py-2 px-4 rounded cursor-default">
                       Crypto (soon)
-                    </button>
+                    </button> */}
 
+                    <PaymentButton amount={e.prix / 0.3}/>
                   </div>
                 </div>
+
+    <Modal/>
                 {/* </Link> */}
               </div>
             ))

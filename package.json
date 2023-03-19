@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@gemwallet/api": "^2.2.0",
+    "@mui/material": "^5.11.13",
     "@stripe/stripe-js": "^1.49.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",

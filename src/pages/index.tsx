@@ -54,7 +54,7 @@ export default function Home() {
           </h1>
         </div>
       </div>
-      <div className='w-screen m-10'>
+      <div className='w-screen my-10'>
         <div className='w-screen'>
         </div>
         <h2 className="text-2xl text-left text-white font-bold z-10 m-8">Find partners around your favorite events and get rewarded by earning XRP!</h2>

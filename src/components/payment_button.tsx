@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from "react";
 import {isConnected, sendPayment, getNetwork} from "@gemwallet/api";
+import Modal from "./modal_box";
 
-export default function PaymentButton() {
+export default function PaymentButton(props: any) {
   const [payment_done, setPaymentDone] = useState(false);
   const [payment_error, setPaymentError] = useState(false);
   const [payment_error_message, setPaymentErrorMessage] = useState("");
@@ -10,13 +11,15 @@ export default function PaymentButton() {
   const mn = "Mainnet"
   const tn = "Testnet"
 
+  console.log(props)
+
   const handlePayment = useCallback(async () => {
     try {
       const isGemWalletInstalled = await isConnected();
       const net = tn;
       if (isGemWalletInstalled) {
         const payment = {
-          amount: payment_amount,
+          amount: props?.amount.toFixed(2),
           destination: payment_address,
         };
         const walletNetwork = await getNetwork();
@@ -34,7 +37,7 @@ export default function PaymentButton() {
         // Handle case where wallet is not connected
         alert("Wallet is not connected");
       }
-    } catch (error) {
+    } catch (error:any) {
       console.log("Error: ", error);
       setPaymentError(true);
       setPaymentErrorMessage(error.message);
@@ -42,11 +45,11 @@ export default function PaymentButton() {
   }, [payment_amount]);
 
   return (
-    <section>
-      <div>Send 10 XRP to {payment_address}</div>
-      <button type="button" onClick={handlePayment}>
-        Pay
+    <>
+        <button className="bg-pink-500 hover:bg-pink-700 w-1/2 text-white font-bold py-2 px-4 rounded"
+      onClick={handlePayment}>
+        Pay with crypto (XRP) - testnet
       </button>
-    </section>
+        </>
   );
 };
