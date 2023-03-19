@@ -11,9 +11,8 @@ export default function PaymentButton(props: any) {
   const mn = "Mainnet"
   const tn = "Testnet"
 
-  console.log(props)
-
-  const handlePayment = useCallback(async () => {
+  const handlePayment = async () => {
+    console.log(props)
     try {
       const isGemWalletInstalled = await isConnected();
       const net = tn;
@@ -22,17 +21,28 @@ export default function PaymentButton(props: any) {
           amount: props?.amount.toFixed(2),
           destination: payment_address,
         };
-        const walletNetwork = await getNetwork();
-        console.log("Wallet Network: ", walletNetwork)
-        if (net === walletNetwork) {
             const trHash = await sendPayment(payment);
             console.log("Transaction Hash: ", trHash);
-            setPaymentDone(true);
-            alert ("Payment done");
-        }
-        else {
-            alert("Please connect to " + net + " network");
-        }
+            if (trHash === null)
+            {
+                alert("payment failed")
+                setPaymentDone(false);
+            }
+            else
+            {
+              setPaymentDone(true);
+              alert ("Payment done");
+              let res = await fetch("/api/postUser", {
+                method: "POST",
+                body: JSON.stringify({
+                  email: props?.email,
+                  trHash: trHash,
+                }),
+              });
+              res = await res.json();
+              if (res.status === 200) 
+                console.log("DB updated !");
+            }
       } else {
         // Handle case where wallet is not connected
         alert("Wallet is not connected");
@@ -42,13 +52,13 @@ export default function PaymentButton(props: any) {
       setPaymentError(true);
       setPaymentErrorMessage(error.message);
     }
-  }, [payment_amount]);
+  }
 
   return (
     <>
         <button className="bg-pink-500 hover:bg-pink-700 w-1/2 text-white font-bold py-2 px-4 rounded"
       onClick={handlePayment}>
-        Pay with crypto (XRP) - testnet
+        Pay with crypto (XRP)
       </button>
         </>
   );

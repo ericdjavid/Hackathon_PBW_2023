@@ -87,22 +87,20 @@ const ItemPage = () => {
                   </div>)
 
                   }
-                  <div className='flex justify-around h-full align-bottom gap-x-2'>
+                  <div className='flex justify-start h-full align-bottom gap-x-2'>
 
                     {e.stripe ? (
-
                       <button className="bg-blue-500 hover:bg-blue-700 w-1/2 text-white font-bold py-2 px-4 rounded">
                         <a target="_blank" href={e.stripe}>
                           Pay with Stripe
                         </a>
                       </button>
                     ) : null}
-
                     {/* <button className="bg-gray-400 w-1/2 text-gray-600 font-bold py-2 px-4 rounded cursor-default">
                       Crypto (soon)
                     </button> */}
 
-                    <PaymentButton amount={e.prix / 0.3}/>
+                    {/* <PaymentButton amount={e.prix / 0.3}/> */}
                   </div>
                 </div>
 
