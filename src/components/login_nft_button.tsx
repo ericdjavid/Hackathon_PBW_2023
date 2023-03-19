@@ -43,5 +43,5 @@ export default function LoginNftButton() {
         </pre>
       ) : null}
     </section>
-  );
+  );    
 };
