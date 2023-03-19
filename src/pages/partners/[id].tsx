@@ -5,12 +5,10 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 const ItemPage = () => {
-  const router = useRouter();
-  console.log(router)
-  const { id } = router.query;
+  const router: any = useRouter();
+  const id = router.query.id;
 
   const [data, setData] = useState([]);
-  const [theid, setTheId] = useState(0);
 
   async function fetchReview() {
     let res = await fetch(
@@ -23,7 +21,7 @@ const ItemPage = () => {
       }
     );
     let reviews = await res.json();
-    console.log(reviews);
+    // console.log(reviews);
     setData(reviews.data);
   }
 
@@ -56,9 +54,16 @@ const ItemPage = () => {
                   <div className="pb-2 text-black">
                     Cashback: {(e.fixCashback / 0.3).toFixed(2)} XRP ({e.fixCashback}€ )
                   </div>
+                  <div className='flex justify-around h-full align-bottom'> 
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Order
+                    Order FIAT
                   </button>
+
+                  <button className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+                    Order CRYPTO
+                  </button>
+
+                  </div>
                 </div>
                 {/* </Link> */}
               </div>
@@ -66,9 +71,9 @@ const ItemPage = () => {
           }
         </div>
       </div>
-
     </Layout>
   );
 };
+
 
 export default ItemPage;
