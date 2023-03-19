@@ -14,6 +14,7 @@ const ItemPage = () => {
   const [data, setData] = useState([]);
   const [gated, setGated] = useState<boolean>(false)
   const [myNft, setMyNft] = useState()
+  const [address, setAddress] = useState('');
 
   async function fetchReview() {
     let res = await fetch(
@@ -26,24 +27,29 @@ const ItemPage = () => {
       }
     );
     let reviews = await res.json();
-    // console.log(reviews);
     setData(reviews.data);
   }
 
   useEffect(() => {
+
+    const walletAddress: any = Cookies.get('walletAddress') || null;
+    if (walletAddress != null) {
+      setAddress(walletAddress)
+    }
+    console.log(address)
     const fetchData = async () => {
-      const cookieValue:any = await Cookies.get('nfts') || null;
+      const cookieValue: any = await Cookies.get('nfts') || null;
       setMyNft(cookieValue);
     };
 
     fetchData()
-      
+
     if (myNft != null) {
       setGated(true)
       console.log("gated is" + gated)
     }
     fetchReview();
-  }, []);
+  }, [address, myNft, gated]);
 
 
   // Récupérez les données de l'élément à partir de votre source de données (API, base de données, etc.)
@@ -70,8 +76,14 @@ const ItemPage = () => {
                   <div className="pb-2 text-black">
                     Cashback: {(e.fixCashback / 0.3).toFixed(2)} XRP ({e.fixCashback}€ )
                   </div>
-                  {
-                    gated ? (
+                  <div className="my-2 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <strong className="font-bold">Welcome on board ! </strong>
+                    <span className="block sm:inline"> You are qualified for the cashbaX! Do not forget to conect your wallet with the hackathon NFT to get XRP cashbaX!</span>
+                    <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    </span>
+                  </div>
+                  {/* {
+                    gated === false ? (
                   <div className="my-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                     <strong className="font-bold">Beware captain!</strong>
                     <span className="block sm:inline"> You don&apos;t have the good NFT to get some cashbacks.</span>
@@ -85,8 +97,7 @@ const ItemPage = () => {
                     <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
                     </span>
                   </div>)
-
-                  }
+                  } */}
                   <div className='flex justify-start h-full align-bottom gap-x-2'>
 
                     {e.stripe ? (
@@ -104,7 +115,7 @@ const ItemPage = () => {
                   </div>
                 </div>
 
-    <Modal amount={(e.prix / 0.3).toFixed(2)}/>
+                <Modal amount={(e.prix / 0.3).toFixed(2)} />
                 {/* </Link> */}
               </div>
             ))

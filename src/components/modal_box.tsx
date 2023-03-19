@@ -21,7 +21,6 @@ export default function ModalBox(props: any) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("")
-  console.log(props)
 
   let submitForm = async (e:any) => {
     // setLoading(true);

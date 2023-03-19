@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Layout from '@/components/layout'
 
-// const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
 
   const [partners, setPartners] = useState<any>([]);

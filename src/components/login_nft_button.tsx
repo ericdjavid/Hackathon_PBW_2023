@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { isConnected, getNFT, getPublicKey } from '@gemwallet/api';
 import Cookies from 'js-cookie';
-import { convertStringToHex, convertHexToString } from 'xrpl'
+import {  convertHexToString } from 'xrpl'
 import Image from 'next/image';
 
 export default function LoginNftButton() {
@@ -10,8 +10,6 @@ export default function LoginNftButton() {
   const [showAddress, setShowAddress] = useState(false);
   const [isGemWalletInstalled, setIsGemWalletInstalled] = useState<boolean>(true);
   const [open, setOpen] = useState(false);
-
-  const [nfts, setNfts] = useState<unknown[]>();
 
   useEffect(() => {
     // Récupérer l'adresse du wallet de l'utilisateur depuis le cookie
