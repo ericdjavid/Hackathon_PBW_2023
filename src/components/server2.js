@@ -1,25 +1,30 @@
 const xrpl = require('xrpl')
-const express = require('express')
-const app = express()
-const port = 3002
 
-const mn = "wss://xrpicluster.com"
-const tn = "wss://s.altnet.rippletest.net:51233"
-const pk = "sEdVK3uX7CgxUzuG8oSod62BuKW4Eyf"
-
-const Payment = 'Payment'
+const tn = 'wss://s.altnet.rippletest.net:51233'
 const api = new xrpl.Client(tn)
-api.on(Payment, (tx) => {
-    console.log('Received transaction')
-    console.log(tx)
-    api.connect().then(() => {
-        console.log('Connected to XRPL')
-        
-      }) 
-  })
 
+const address = 'rNYSW6g8RnG1fEodnKjwP79hU5S6S2m9u'
 
+// Connect to the XRP Ledger node
+api.connect().then(() => {
+  console.log('Connected to XRPL')
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  // Retrieve information about the account
+  return api.request('Payment', { account: address })
+}).then((response) => {
+  // Check the AccountTxn field of the response for transactions involving the account
+  const accountTxn = response.account_data.AccountTxn
+  if (accountTxn) {
+    api.on('transaction', (tx) => {
+      console.log('Received transaction from', tx.Account)
+      if (tx.TransactionType === 'Payment' && tx.Account === address) {
+        console.log('Received Payment transaction involving', address)
+        console.log(tx)
+      }
+    })
+  } else {
+    console.log('No transactions involving', address)
+  }
+}).catch((error) => {
+  console.error(error)
 })
