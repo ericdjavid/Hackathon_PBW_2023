@@ -19,7 +19,7 @@ export default function LoginNftButton() {
     const myNft = Cookies.get('nfts');
     console.log(myNft)
     setMyNft(myNft);
-    
+
     if (walletAddress != null) {
       setAddress(walletAddress)
       setShowAddress(true);
@@ -54,30 +54,19 @@ export default function LoginNftButton() {
     }
   }
 
-  // async function handleNFT() {
-  //   const isConnectedGem = await isConnected();
-  //   if (isConnectedGem) {
-  //     const responsePublicKey = await getPublicKey();
-  //     if (responsePublicKey) {
-  //       const { address: addr, publicKey } = responsePublicKey;
-  //       setAddress(addr);
-  //       // Stocker l'adresse du wallet de l'utilisateur dans un cookie
-  //       setShowAddress(true);
-  //     }
-  //       const nft: any = await getNFT();
-
-  //   } else {
-  //     setIsGemWalletInstalled(false);
-  //   }
-  // }
-
   return (
     <div>
       <button
         onClick={showAddress ? (() => setOpen(!open)) : handleNFT}
-        className="connect_wallet text-white font-bold py-2 px-4 rounded-full absolute top-5 right-5 z-20">
-
-        {showAddress ? <div>{address?.slice(0, 10) + "..."}</div> : <div>Connect Wallet</div>}
+        className="connect_wallet text-white font-bold py-1 px-1 rounded-full absolute top-5 right-5 z-20">
+        {showAddress ? <div className='flex align-middle m-auto'>
+          <div className="bg-gray-200 rounded-full w-17 h-14 border border-gray-200">
+  <Image src="/img/Sato.webp" alt="Avatar" className="rounded-full w-full h-full object-cover " width={50} height={50}/>
+</div>
+           <div className='w-full h-full my-auto'>
+            {address?.slice(0, 10) + "..."}
+            </div>
+            </div> : <div>Connect Wallet</div>}
       </button>
       {
         open && (

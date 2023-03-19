@@ -1,4 +1,5 @@
 import Layout from '@/components/layout';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,6 +10,8 @@ const ItemPage = () => {
   const id = router.query.id;
 
   const [data, setData] = useState([]);
+  const [gated, setGated] = useState<boolean>(false)
+  const [myNft, setMyNft] = useState()
 
   async function fetchReview() {
     let res = await fetch(
@@ -26,6 +29,17 @@ const ItemPage = () => {
   }
 
   useEffect(() => {
+    const fetchData = async () => {
+      const cookieValue:any = await Cookies.get('nfts') || null;
+      setMyNft(cookieValue);
+    };
+
+    fetchData()
+      
+    if (myNft != null) {
+      setGated(true)
+      console.log("gated is" + gated)
+    }
     fetchReview();
   }, []);
 
@@ -54,20 +68,37 @@ const ItemPage = () => {
                   <div className="pb-2 text-black">
                     Cashback: {(e.fixCashback / 0.3).toFixed(2)} XRP ({e.fixCashback}€ )
                   </div>
-                  <div className='flex justify-around h-full align-bottom gap-x-2'> 
+                  {
+                    gated ? (
+                  <div className="my-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong className="font-bold">Beware captain!</strong>
+                    <span className="block sm:inline"> You don&apos;t have the good NFT to get some cashbacks.</span>
+                    <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    </span>
+                  </div>)
+                  : 
+                 ( <div className="my-2 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                    <strong className="font-bold">Welcome on board ! You are qualified for the cashbaXx!</strong>
+                    <span className="block sm:inline"> You don&apos;t have the good NFT to get some cashbacks.</span>
+                    <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    </span>
+                  </div>)
+
+                  }
+                  <div className='flex justify-around h-full align-bottom gap-x-2'>
 
                     {e.stripe ? (
-                      
+
                       <button className="bg-blue-500 hover:bg-blue-700 w-1/2 text-white font-bold py-2 px-4 rounded">
-                  <a target="_blank" href={e.stripe}>
-                    Pay with Stripe
-                  </a>
-                  </button>
+                        <a target="_blank" href={e.stripe}>
+                          Pay with Stripe
+                        </a>
+                      </button>
                     ) : null}
 
-                  <button className="bg-gray-400 w-1/2 text-gray-600 font-bold py-2 px-4 rounded cursor-default">
-                    Crypto (soon)
-                  </button>
+                    <button className="bg-gray-400 w-1/2 text-gray-600 font-bold py-2 px-4 rounded cursor-default">
+                      Crypto (soon)
+                    </button>
 
                   </div>
                 </div>
