@@ -40,13 +40,13 @@ export default function Home() {
       </Head>
       <Layout>
 
-      <div className="relative h-80">
+      <div className="relative h-96">
         <Image
-          src="/img/test.jpg"
-          className="absolute inset-0 object-cover w-full h-full"
+          src="/img/ripple.webp"
+          className="absolute inset-0 bg-contain object-cover w-full h-full"
           alt="background"
           width={1000}
-          height={1000}
+          height={1400}
         />
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="absolute inset-0 flex justify-center items-center">
@@ -58,8 +58,8 @@ export default function Home() {
       <div className='w-screen m-10'>
         <div className='w-screen'>
         </div>
-        <h2 className="text-2xl text-white font-bold text-left z-10 m-4">
-          Liste des partenaires
+        <h2 className="text-2xl text-white font-bold text-left z-10 m-8">
+          Event Partners
         </h2>
         <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 sm:justify-center justify-evenly'>
           {
@@ -68,7 +68,7 @@ export default function Home() {
                 key={e.name}
               >
                 <Link href={`/partners/${e.index}`}>
-                  <Image className="w-full bg-cover max-h-48 z-0" src={e.image} alt="Sunset in the mountains" width={100} height={100} />
+                  <Image className="w-full bg-cover object-cover max-h-48 z-0" src={e.image} alt="Sunset in the mountains" width={1000} height={1000} />
                   <div className="px-6 py-4">
                     <div className="text-black font-bold text-xl mb-2">{e.nom}</div>
                     <p className="text-gray-700 text-base">

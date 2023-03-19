@@ -40,13 +40,11 @@ const ItemPage = () => {
         <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 m-5'>
           {
             data.map((e: any) => (
-              <div className="w-full sm:w-1/4 h-1/2 rounded overflow-hidden shadow-lg bg-white m-auto sm:mx-4 "
+              <div className="w-full sm:w-1/4 rounded overflow-hidden shadow-lg bg-white mx-auto sm:mx-4 "
                 key={e.name}
               >
                 {/* <Link href={`/partners/${e.index}`}> */}
-                <div className="w-full h-full">
-                <Image className="object-contain bg-cover w-full h-full" src={e.image} alt="Sunset in the mountains" width={1000} height={1000} />
-                </div>
+                <Image className="bg-cover object-cover w-full h-52 " src={e.image} alt={e.nom} width={1000} height={1000} />
                 <div className="px-6 py-4">
                   <div className="text-black font-bold text-xl mb-2">{e.nom}</div>
                   <p className="text-gray-700 text-base pb-2">
