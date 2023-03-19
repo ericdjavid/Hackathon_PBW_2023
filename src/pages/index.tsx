@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Layout from '@/components/layout'
@@ -58,8 +57,9 @@ export default function Home() {
       <div className='w-screen m-10'>
         <div className='w-screen'>
         </div>
+        <h2 className="text-2xl text-left text-white font-bold z-10 m-8">Find partners around your favorite events and get rewarded by earning XRP!</h2>
         <h2 className="text-2xl text-white font-bold text-left z-10 m-8">
-          Event Partners
+        ➡️ Paris Blockchain Hackathon Shopping Partners
         </h2>
         <div className='w-full flex sm:flex-col md:flex-row flex-wrap gap-y-8 sm:justify-center justify-evenly'>
           {
@@ -79,9 +79,9 @@ export default function Home() {
                     </p>
                   </div>
                   <div className="px-6 pt-4 pb-2">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#restau</span>
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#food</span>
+                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#lemarais</span>
                   </div>
                 </Link>
               </div>
