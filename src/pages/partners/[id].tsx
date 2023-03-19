@@ -78,8 +78,8 @@ const ItemPage = () => {
                   </div>)
                   : 
                  ( <div className="my-2 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                    <strong className="font-bold">Welcome on board ! You are qualified for the cashbaXx!</strong>
-                    <span className="block sm:inline"> You don&apos;t have the good NFT to get some cashbacks.</span>
+                    <strong className="font-bold">Welcome on board ! </strong>
+                    <span className="block sm:inline"> You are qualified for the cashbaXx!</span>
                     <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
                     </span>
                   </div>)
