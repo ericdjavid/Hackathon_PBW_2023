@@ -104,7 +104,7 @@ const ItemPage = () => {
                   </div>
                 </div>
 
-    <Modal/>
+    <Modal amount={(e.prix / 0.3).toFixed(2)}/>
                 {/* </Link> */}
               </div>
             ))

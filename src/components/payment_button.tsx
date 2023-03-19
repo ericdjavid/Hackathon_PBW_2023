@@ -18,7 +18,7 @@ export default function PaymentButton(props: any) {
       const net = tn;
       if (isGemWalletInstalled) {
         const payment = {
-          amount: props?.amount.toFixed(2),
+          amount: props?.amount,
           destination: payment_address,
         };
             const trHash = await sendPayment(payment);

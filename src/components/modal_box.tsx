@@ -15,12 +15,13 @@ const style = {
   p: 4,
 };
 
-export default function ModalBox() {
+export default function ModalBox(props: any) {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [email, setEmail] = useState("")
+  console.log(props)
 
   let submitForm = async (e:any) => {
     // setLoading(true);
@@ -72,7 +73,7 @@ export default function ModalBox() {
             />
             {
                submitted ? ( 
-              <PaymentButton amount={10} email={email}/>) : 
+              <PaymentButton amount={props?.amount} email={email}/>) : 
 
         <button className="bg-pink-500 hover:bg-pink-700 w-1/2 text-white font-bold py-2 px-4 rounded"
               onClick={submitForm}
